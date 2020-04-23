@@ -1,0 +1,40 @@
+.button {
+  position: relative;
+  transform: translate(-50%);
+  width: 60%;
+  height: 50px;
+  text-align: center;
+  background-color: #ddd;
+  cursor: pointer;
+  box-shadow: 0 0 6px 4px #ddd;
+  font-size: 0;
+  transition: 0.5s;
+}
+.button:hover {
+  background-color: #ccd;
+  border-radius: 12px;
+}
+.bLeft {
+  left: 0;
+}
+.bRight {
+  left: 100%;
+}
+.text {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  text-shadow: 0 0 40px;
+  transition: 0.6s;
+}
+.text:hover {
+  text-shadow: 0 0 3px;
+}
+body {
+  background-color: #bbb;
+  font-family: Comfortaa, cursive;
+}
+h1 {
+  text-align: center;
+}
