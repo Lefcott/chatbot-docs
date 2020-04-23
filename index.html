@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .button {
+        position: relative;
+        transform: translate(-50%);
+        width: 60%;
+        height: 50px;
+        text-align: center;
+        background-color: #ddd;
+        cursor: pointer;
+        box-shadow: 0 0 6px 4px #ddd;
+        font-size: 0;
+        transition: 0.5s;
+      }
+      .button:hover {
+        background-color: #ccd;
+        border-radius: 12px;
+      }
+      .bLeft {
+        left: 0;
+      }
+      .bRight {
+        left: 100%;
+      }
+      .text {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+        text-shadow: 0 0 60px;
+        transition: 1s;
+      }
+      .text:hover {
+        text-shadow: 0 0 3px;
+      }
+      body {
+        background-color: #bbb;
+        font-family: Comfortaa, cursive;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Transacciones Chatbot</h1>
+    <a href="/camuzzi">
+      <div class="button bLeft"><div class="text">Camuzzi</div></div>
+    </a>
+    <a href="/edelap">
+      <div class="button bRight"><div class="text">Edelap</div></div>
+    </a>
+    <script>
+      const texts = document.getElementsByClassName('button');
+      setTimeout(() => {
+        for (let k = 0; k < texts.length; k += 1) {
+          texts[k].style.left = '50%';
+          texts[k].style.fontSize = '20px';
+          texts[k].style.textShadow = '';
+        }
+      }, 10);
+    </script>
+  </body>
+</html>

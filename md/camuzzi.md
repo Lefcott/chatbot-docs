@@ -4,7 +4,7 @@
 ### Consulta de tarifa social: sin token
 GET /api/Suministro/GetTarifaSocial?NumeroDocumento=%DOCUMENT_NUMBER&Sexo=%SEX_CHOICE
 Campos del body utilizados:
-```json
+```js
 {
   "SuministroExiste": "Boolean",
   "DocumentoErroneo": "Boolean",

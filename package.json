@@ -1,0 +1,26 @@
+{
+  "name": "chatbot-docs",
+  "version": "1.0.0",
+  "description": "docs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app -e js,md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lefcott19/chatbot-docs.git"
+  },
+  "author": "Leandro Cotti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lefcott19/chatbot-docs/issues"
+  },
+  "homepage": "https://github.com/lefcott19/chatbot-docs#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "highlight.js": "^10.0.0",
+    "markdown-it": "^10.0.0",
+    "showdown": "^1.9.1"
+  }
+}
