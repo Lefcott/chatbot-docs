@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Transacciones Chatbot</h1>
+    <a href="/edelap/saldo">
+      <div class="button bLeft"><div class="text">Consulta de Saldo</div></div>
+    </a>
+    <script>
+      const texts = document.getElementsByClassName('button');
+      setTimeout(() => {
+        for (let k = 0; k < texts.length; k += 1) {
+          texts[k].style.left = '50%';
+          texts[k].style.fontSize = '20px';
+          texts[k].style.textShadow = '';
+        }
+      }, 10);
+    </script>
+  </body>
+</html>
