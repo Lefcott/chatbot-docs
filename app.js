@@ -50,7 +50,7 @@ app.get("/style.css", (req, res) => res.sendFile(`${__dirname}/md/style.css`));
 const t = {
   camuzzi: ["saldo", "tarifa-social"],
   edenor: ["saldo", "consumo"],
-  edelap: ["saldo"],
+  edelap: ["saldo", "descarga-factura"],
 };
 define(t);
 app.listen(process.env.PORT || 1500);
