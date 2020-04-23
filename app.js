@@ -1,7 +1,6 @@
 const express = require("express");
 const fs = require("fs");
 const hljs = require("highlight.js");
-const { Converter } = require("showdown");
 const md = require("markdown-it")({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
@@ -20,7 +19,6 @@ const md = require("markdown-it")({
   },
 });
 const app = express();
-const converter = new Converter();
 
 app.get("/", (req, res) => {
   res.status(200).send(fs.readFileSync(`${__dirname}/index.html`).toString());
@@ -51,7 +49,7 @@ const define = (utility) => {
 app.get("/style.css", (req, res) => res.sendFile(`${__dirname}/md/style.css`));
 const t = {
   camuzzi: ["saldo", "tarifa-social"],
-  edenor: ["saldo"],
+  edenor: ["saldo", "consumo"],
 };
 define(t);
 app.listen(process.env.PORT || 1500);
