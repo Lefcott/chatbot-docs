@@ -36,4 +36,4 @@ app.get("/camuzzi", (req, res) => {
     );
 });
 
-app.listen(1500);
+app.listen(process.env.NODE_ENV || 1500);
