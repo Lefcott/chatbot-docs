@@ -35,13 +35,22 @@ const define = (utility) => {
       (t) =>
         console.log(key, t) ||
         app.get(`/${key}/${t}`, (req, res) => {
-          res
-            .status(200)
-            .send(
-              md.render(
-                fs.readFileSync(`${__dirname}/md/${key}/${t}.md`).toString()
-              )
-            );
+          res.status(200).send(
+            `<html>
+               <head>
+               <style>
+               body {
+                 background-color: #cdd;
+               }
+               </style>
+               </head>
+               <body>
+               ${md.render(
+                 fs.readFileSync(`${__dirname}/md/${key}/${t}.md`).toString()
+               )}
+               </body>
+               </html>`
+          );
         })
     );
   }
@@ -49,7 +58,7 @@ const define = (utility) => {
 app.get("/style.css", (req, res) => res.sendFile(`${__dirname}/md/style.css`));
 const t = {
   camuzzi: ["saldo", "tarifa-social"],
-  edenor: ["saldo", "consumo"],
+  edenor: ["saldo", "consumo", "recarga-mide"],
   edelap: ["saldo", "descarga-factura", "reclamo-tecnico"],
 };
 define(t);
