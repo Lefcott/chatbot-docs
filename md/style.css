@@ -3,6 +3,7 @@
   transform: translate(-50%);
   width: 60%;
   height: 50px;
+  left: 50%;
   text-align: center;
   background-color: #ddd;
   cursor: pointer;
@@ -23,8 +24,6 @@
 .text {
   position: absolute;
   transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
   text-shadow: 0 0 40px;
   transition: 0.6s;
 }

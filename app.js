@@ -60,6 +60,8 @@ const t = {
   camuzzi: ["saldo", "tarifa-social"],
   edenor: ["saldo", "consumo", "recarga-mide"],
   edelap: ["saldo", "descarga-factura", "reclamo-tecnico"],
+  eden: ["saldo", "ultima-factura"],
+  edes: ["saldo"]
 };
 define(t);
 app.listen(process.env.PORT || 1500);

@@ -7,18 +7,19 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Transacciones Chatbot</h1>
+    <h1>Transacciones Chatbot Camuzzi</h1>
     <a href="/camuzzi/saldo">
-      <div class="button bLeft"><div class="text">Consulta de Saldo</div></div>
+      <div class="button"><div class="text bLeft">Consulta de Saldo</div></div>
     </a>
     <a href="/camuzzi/tarifa-social">
-      <div class="button bLeft"><div class="text">Consulta de Tarifa Social</div></div>
+      <div class="button"><div class="text bRight">Consulta de Tarifa Social</div></div>
     </a>
     <script>
-      const texts = document.getElementsByClassName('button');
+      const texts = document.getElementsByClassName('text');
       setTimeout(() => {
         for (let k = 0; k < texts.length; k += 1) {
           texts[k].style.left = '50%';
+          texts[k].style.top = '50%';
           texts[k].style.fontSize = '20px';
           texts[k].style.textShadow = '';
         }
