@@ -61,7 +61,7 @@ const t = {
   edenor: ["saldo", "consumo", "recarga-mide"],
   edelap: ["saldo", "descarga-factura", "reclamo-tecnico"],
   eden: ["saldo", "ultima-factura"],
-  edes: ["saldo"]
+  edes: ["saldo", "nises", "ultima-factura"]
 };
 define(t);
 app.listen(process.env.PORT || 1500);
