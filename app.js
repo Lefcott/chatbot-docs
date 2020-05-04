@@ -58,7 +58,7 @@ const define = (utility) => {
 app.get("/style.css", (req, res) => res.sendFile(`${__dirname}/md/style.css`));
 const t = {
   camuzzi: ["saldo", "tarifa-social"],
-  edenor: ["saldo", "consumo", "recarga-mide"],
+  edenor: ["saldo", "consumo", "reclamos", "recarga-mide"],
   edelap: ["saldo", "descarga-factura", "reclamo-tecnico"],
   eden: ["saldo", "ultima-factura"],
   edes: ["saldo", "nises", "ultima-factura"]
