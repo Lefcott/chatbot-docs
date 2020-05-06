@@ -26,6 +26,12 @@ Se pasa el mensaje a minúsculas sin acentos y se compara con "la cuenta es inva
 ### Si monto = 0
 #### Paso 3.1. Morosidad:
 GET /morosidad?cuenta_id=%ACCOUNT_ID
+
+Request Headers:
+{
+  Authorization: access_token
+}
+
 Campos del body utilizados:
 ```js
 {
@@ -36,6 +42,11 @@ Campos del body utilizados:
 #### "cortado por falta de pago":
 #### Paso 3.1.1. Detalle de morosidad
 GET /morosidad/detalle?cuenta_id=%ACCOUNT_ID
+
+Request Headers:
+{
+  Authorization: access_token
+}
 
 Campos del body utilizados:
 ```js
