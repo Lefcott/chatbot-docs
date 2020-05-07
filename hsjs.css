@@ -1,0 +1,24 @@
+.hljs {
+  margin-left: 80px;
+  background-color: #334;
+  border-radius: 15px;
+  color: #fff;
+  width: 60%;
+  max-width: 700px;
+  transition: 0.1s;
+}
+.hljs:hover {
+  background-color: #445;
+  box-shadow: 0 0 4px 2px #445;
+}
+.hljs-attr {
+  color: rgb(235, 171, 53);
+  text-shadow: 0 0 2px rgb(235, 171, 53);
+}
+.hljs-string {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.hljs-comment {
+  color: rgb(33, 218, 125);
+  text-shadow: 0 0 4px rgba(33, 218, 125, 0.5);
+}

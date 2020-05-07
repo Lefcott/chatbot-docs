@@ -4,7 +4,7 @@
 GET /api/Suministro/GetTarifaSocial?NumeroDocumento=%DOCUMENT_NUMBER&Sexo=%SEX_CHOICE
 
 Campos del body utilizados:
-```js
+```json
 {
   "SuministroExiste": "Boolean",
   "DocumentoErroneo": "Boolean",

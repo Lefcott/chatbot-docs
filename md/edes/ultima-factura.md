@@ -5,7 +5,7 @@
 GET /api/data/ugo/suministro/*ACCOUNTID*
 
 Campos del body utilizados:
-```js
+```json
 {
   "Direccion": "String",
   "EstadoSuministro": "String"
@@ -17,7 +17,7 @@ Verifica el suministro. En caso de no existir, pide que lo vuelva a ingresar.
 GET /consumer_api/v1/bills?client_number=*accountId*
 
 Campos del body utilizados:
-```js
+```json
 [
   {
     "period": "Number",
@@ -31,7 +31,7 @@ Si no:
 GET /consumer_api/v1/printed_bills?client_number=%NIS%&external_id=*EXTERNAL_ID*
 
 Campos del body utilizados:
-```js
+```json
 { "base64": "String" }
 ```
 Se envía el base64 como attachment.

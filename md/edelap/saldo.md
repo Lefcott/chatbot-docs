@@ -5,7 +5,7 @@
 GET /api/v1/bills/payable?client_number=%NIS
 
 Campos del body utilizados:
-```js
+```json
 {
   "total_debt": "String",
   "error": "String",

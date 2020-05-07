@@ -5,7 +5,7 @@
 GET /api/v1/accounts/balance?client_number=*CLIENT_NUMBER*&email=*EMAIL*
 
 Campos del body utilizados:
-```js
+```json
 { "message": "String" }
 ```
 Devuelve el mensaje.
@@ -17,7 +17,7 @@ Devuelve el mensaje.
 GET /api/data/ugo/suministro/*ACCOUNTID*
 
 Campos del body utilizados:
-```js
+```json
 {
   "Direccion": "String",
   "DebitoAutomatico": "Boolean",
@@ -32,7 +32,7 @@ Si no, ejecuta el siguiente paso:
 
 GET /api/data/sgc/pagosinfactura/consultadeuda
 Campos del body utilizados:
-```js
+```json
 {
   "Deudas": [
     {

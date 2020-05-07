@@ -5,14 +5,14 @@
 POST /token
 
 Campos del body utilizados:
-```js
+```json
 { "access_token": "String" }
 ```
 #### Paso 2.:
 POST /reclamos
 
 Campos del body utilizados:
-```js
+```json
 {
   "mensaje": "String",
   "error": "String"

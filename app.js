@@ -38,10 +38,14 @@ const define = (utility) => {
           res.status(200).send(
             `<html>
                <head>
+               <link href="https://fonts.googleapis.com/css?family=Jost&display=swap" rel="stylesheet">
                <style>
                body {
                  background-color: #cdd;
+                 font-family: "Jost";
                }
+               ${fs.readFileSync(`${__dirname}/markdown.css`).toString()}
+               ${fs.readFileSync(`${__dirname}/hsjs.css`).toString()}
                </style>
                </head>
                <body>
@@ -61,7 +65,8 @@ const t = {
   edenor: ["saldo", "consumo", "reclamos", "recarga-mide"],
   edelap: ["saldo", "descarga-factura", "reclamo-tecnico"],
   eden: ["saldo", "ultima-factura"],
-  edes: ["saldo", "nises", "ultima-factura"]
+  edes: ["saldo", "nises", "ultima-factura"],
+  "notifications-mailer": ["emails", "templates", "deliveries"],
 };
 define(t);
 app.listen(process.env.PORT || 1500);

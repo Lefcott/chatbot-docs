@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>API Notificaciones - Mailer</h1>
+    <a href="/notifications-mailer/emails">
+      <div class="button"><div class="text bLeft">Emails</div></div>
+    </a>
+    <a href="/notifications-mailer/templates">
+      <div class="button"><div class="text bLeft">Templates</div></div>
+    </a>
+    <a href="/notifications-mailer/deliveries">
+      <div class="button"><div class="text bLeft">Deliveries</div></div>
+    </a>
+    <script>
+      const texts = document.getElementsByClassName('text');
+      setTimeout(() => {
+        for (let k = 0; k < texts.length; k += 1) {
+          texts[k].style.left = '50%';
+          texts[k].style.top = '50%';
+          texts[k].style.fontSize = '20px';
+          texts[k].style.textShadow = '';
+        }
+      }, 10);
+    </script>
+  </body>
+</html>

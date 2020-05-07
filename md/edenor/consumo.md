@@ -5,14 +5,14 @@
 POST /token
 
 Campos del body utilizados:
-```js
+```json
 { "access_token": "String" }
 ```
 #### Paso 2.:
 GET /cuentas/*ACCOUNT_ID*/consumos?periodos=1
 
 Campos del body utilizados:
-```js
+```json
 [
   {
     "periodo": "String",

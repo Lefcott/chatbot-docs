@@ -5,14 +5,14 @@
 POST /token
 
 Campos del body utilizados:
-```js
+```json
 { "access_token": "String" }
 ```
 #### Paso 2.:
 GET /cuentas/%ACCOUNT_ID/saldos
 
 Campos del body utilizados:
-```js
+```json
 [
   {
     "mensaje": "String",
@@ -33,7 +33,7 @@ Request Headers:
 }
 
 Campos del body utilizados:
-```js
+```json
 {
   "codigo_morosidad": "String"
 }
@@ -49,7 +49,7 @@ Request Headers:
 }
 
 Campos del body utilizados:
-```js
+```json
 {
   "suspendido_falta_pago": {
     "cortado_falta_pago": "Boolean"

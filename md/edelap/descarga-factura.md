@@ -5,14 +5,14 @@
 POST /consumer_api/v1/sessions
 
 Campos del body utilizados:
-```js
+```json
 { "access_token": "String" }
 ```
 #### Paso 2.:
 GET /consumer_api/v1/bills?client_number=*NIS*
 
 Campos del body utilizados:
-```js
+```json
 [
   {
     "period": "Number",
@@ -23,7 +23,7 @@ Campos del body utilizados:
 #### Si external_id es null se devuelve un mensaje de "No registramos facturas".
 #### Si no:
 GET /consumer_api/v1/printed_bills?client_number=*NIS*&external_id=*EXTERNAL_ID*
-```js
+```json
   { "url": "String" }
 ```
 #### Se envía un botón con la url para descargar la factura

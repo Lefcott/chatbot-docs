@@ -5,7 +5,7 @@
 GET /api/v1/form_categories?forms_type=claim
 
 Campos del body utilizados:
-```js
+```json
 [
   {
     "forms": [
@@ -20,7 +20,7 @@ Campos del body utilizados:
 ##### Con el id del form se genera un reclamo:
 POST /api/v1/form_responses
 Campos del body utilizados:
-```js
+```json
   {
     "Errors": [],
     "message": "String",

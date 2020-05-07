@@ -5,7 +5,7 @@
 GET /api/v1/accounts/balance?client_number=*CLIENT_NUMBER*&email=*EMAIL*
 
 Campos del body utilizados:
-```js
+```json
 { "message": "String" }
 ```
 Devuelve el mensaje.

@@ -5,14 +5,14 @@
 POST /consumer_api/v1/sessions
 
 Campos del body utilizados:
-```js
+```json
 { "access_token": "String" }
 ```
 #### Paso 2.:
 GET /consumer_api/v1/prepaids/emergency_charge?meter_prepaid_number=*METER_NUMBER_ID*
 
 Campos del body utilizados:
-```js
+```json
 {
   "client_number": "String",
   "address": "String",
@@ -24,7 +24,7 @@ Campos del body utilizados:
 POST /consumer_api/v1/prepaids/emergency_charge
 
 Campos del body utilizados:
-```js
+```json
 {
   "errors": [
     {
