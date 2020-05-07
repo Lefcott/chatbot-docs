@@ -21,35 +21,74 @@ URL prod : https://notifications-api.widergy.com/api/v1
 ```json
 {
   "from_name": "String",
-  "recipients": [ // (Requerido)
+  "recipients": [ // Requerido
     {
-      "email": "String", // (Requerido) Email válido
-      "type": "String" // (Requerido) Valores posibles: "to", "cc", "bcc", "replyTo"
+      "email": "String", // Requerido (Email válido)
+      "type": "String" // Requerido (Valores posibles: "to", "cc", "bcc", "replyTo")
     }
   ],
-  "model": { // (Requerido)
-    "subject": "String" // (Requerido)
+  "model": { // Requerido
+    "subject": "String" // Requerido
   },
-  "text": "String", // (Requerido en caso de no venir html)
-  "html": "String", // (Requerido en caso de no venir text)
+  "html": "String", // Requerido
+  "text": "String",
   "attachments": [
     {
-      "content_type": "String", // (Requerido)
-      "base64_content": "String", // (Requerido)
-      "filename": "String" // (Requerido)
+      "content_type": "String", // Requerido
+      "base64_content": "String", // Requerido
+      "filename": "String" // Requerido
     }
   ],
   "metadata": {
-    "sender": "String", // (Requerido) Email válido
+    "sender": "String", // Requerido (Email válido)
     "metadata": [
       {
-        "key": "String", // (Requerido)
-        "value": "Any" // (Requerido)
+        "key": "String", // Requerido
+        "value": "Any" // Requerido
       }
     ]
   }
 }
 ```
+
+- Responses:
+
+  - Status 202:
+    - ```json
+      {
+        "createdResourceId": "String",
+        "message": "Email successfully created.",
+        "_links": [
+          {
+            "href": "/api/v1/mailer/delivery/{{ deliveryId }}",
+            "description": "Specific delivery"
+          }
+        ]
+      }
+      ```
+  - Status 422:
+    - ```json
+      {
+        "error": "Missing properties in field \"metadata\"",
+        "missingKeys": ["String"]
+      }
+      ```
+  - Status 400:
+    - ```json
+      { "error": "Bad parameters" }
+      ```
+  - Status 401:
+    - ```json
+      { "error": "Not authorized" }
+      ```
+  - Status 404:
+    - ```json
+      { "error": "Delivery not found" }
+      ```
+  - Status 500:
+    - ```json
+      { "error": "{{ error }}" }
+      ```
 
 #### Enviar mail con template:
 
@@ -66,30 +105,68 @@ URL prod : https://notifications-api.widergy.com/api/v1
 ```json
 {
   "from_name": "String",
-  "recipients": [ // (Requerido)
+  "recipients": [ // Requerido
     {
-      "email": "String", // (Requerido) Email válido
-      "type": "String" // (Requerido) Valores posibles: "to", "cc", "bcc", "replyTo"
+      "email": "String", // Requerido (Email válido)
+      "type": "String" // Requerido (Valores posibles: "to", "cc", "bcc", "replyTo")
     }
   ],
-  "model": { // (Requerido)
-    "subject": "String" // (Requerido)
+  "model": { // Requerido
+    "subject": "String" // Requerido
   },
   "attachments": [
     {
-      "content_type": "String", // (Requerido)
-      "base64_content": "String", // (Requerido)
-      "filename": "String" // (Requerido)
+      "content_type": "String", // Requerido
+      "base64_content": "String", // Requerido
+      "filename": "String" // Requerido
     }
   ],
   "metadata": {
-    "sender": "String", // (Requerido) Email válido
+    "sender": "String", // Requerido (Email válido)
     "metadata": [
       {
-        "key": "String", // (Requerido)
-        "value": "Any" // (Requerido)
+        "key": "String", // Requerido
+        "value": "Any" // Requerido
       }
     ]
   }
 }
 ```
+
+- Responses:
+
+  - Status 202:
+    - ```json
+      {
+        "createdResourceId": "String",
+        "message": "Email successfully created.",
+        "_links": [
+          {
+            "href": "/api/v1/mailer/delivery/{{ deliveryId }}",
+            "description": "Specific delivery"
+          }
+        ]
+      }
+      ```
+  - Status 422:
+    - ```json
+      {
+        "error": "Missing properties in field \"metadata\"",
+        "missingKeys": ["String"]
+      }
+      ```
+  - Status 400:
+    - ```json
+      { "error": "Bad parameters" }
+      ```
+  - Status 401:
+    - ```json
+      { "error": "Not authorized" }
+      ```
+  - Status 404:
+    - ```json
+      { "error": "Delivery not found" }
+      ```
+  - Status 500:
+    - ```json
+      { "error": "{{ error }}" }

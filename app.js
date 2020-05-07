@@ -38,15 +38,17 @@ const define = (utility) => {
           res.status(200).send(
             `<html>
                <head>
-               <link href="https://fonts.googleapis.com/css?family=Jost&display=swap" rel="stylesheet">
-               <style>
-               body {
-                 background-color: #cdd;
-                 font-family: "Jost";
-               }
-               ${fs.readFileSync(`${__dirname}/markdown.css`).toString()}
-               ${fs.readFileSync(`${__dirname}/hsjs.css`).toString()}
-               </style>
+                 <title>${key} - ${t}</title>
+                 <link rel='shortcut icon' href='/favicon.png'>
+                 <link href="https://fonts.googleapis.com/css?family=Jost&display=swap" rel="stylesheet">
+                 <style>
+                   body {
+                     background-color: #cdd;
+                     font-family: "Jost";
+                   }
+                   ${fs.readFileSync(`${__dirname}/markdown.css`).toString()}
+                   ${fs.readFileSync(`${__dirname}/hsjs.css`).toString()}
+                 </style>
                </head>
                <body>
                ${md.render(
@@ -60,13 +62,14 @@ const define = (utility) => {
   }
 };
 app.get("/style.css", (req, res) => res.sendFile(`${__dirname}/md/style.css`));
+app.get("/favicon.png", (req, res) => res.sendFile(`${__dirname}/favicon.png`));
 const t = {
   camuzzi: ["saldo", "tarifa-social"],
   edenor: ["saldo", "consumo", "reclamos", "recarga-mide"],
   edelap: ["saldo", "descarga-factura", "reclamo-tecnico"],
   eden: ["saldo", "ultima-factura"],
   edes: ["saldo", "nises", "ultima-factura"],
-  "notifications-mailer": ["emails", "templates", "deliveries"],
+  "notifications-mailer": ["emails", "templates", "deliveries", "model-template"],
 };
 define(t);
 app.listen(process.env.PORT || 1500);
