@@ -3,8 +3,7 @@
   background-color: #334;
   border-radius: 15px;
   color: #fff;
-  width: 60%;
-  max-width: 700px;
+  width: 70%;
   transition: 0.1s;
 }
 .hljs:hover {
