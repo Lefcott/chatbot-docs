@@ -8,7 +8,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
 
 #### Crear un Template:
 
-**POST** /mailer/template/**_{template_name}_**
+**POST** /mailer/template/**_{name}_**
 
 - Headers:
 
@@ -20,7 +20,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
 
 #### Actualizar un Template:
 
-**PUT** /mailer/template/**_{template_name}_**
+**PUT** /mailer/template/**_{name}_**
 
 - Headers:
 
@@ -32,7 +32,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
 
 #### Eliminar un Template:
 
-**DELETE** /mailer/template/**_{template_name}_**
+**DELETE** /mailer/template/**_{name}_**
 
 - Headers:
 
@@ -44,7 +44,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
 
 #### Obtener un Template:
 
-**GET** /mailer/template/**_{template_name}_**
+**GET** /mailer/template/**_{name}_**
 
 - Headers:
 
