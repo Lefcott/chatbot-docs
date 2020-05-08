@@ -92,7 +92,7 @@ const t = {
   edenor: ["saldo", "consumo", "reclamos", "recarga-mide"],
   edelap: ["saldo", "descarga-factura", "reclamo-tecnico"],
   eden: ["saldo", "ultima-factura"],
-  edes: ["whatsapp", "saldo", "reclamo", "nises", "ultima-factura"],
+  edes: [/*"whatsapp", */ "saldo", "reclamo", "nises", "ultima-factura"],
   "notifications-mailer": [
     "emails",
     "templates",
