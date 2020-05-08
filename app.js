@@ -52,7 +52,8 @@ const define = (utility) => {
                </head>
                <body>
                ${md.render(
-                 fs.readFileSync(`${__dirname}/md/${key}/${t}.md`).toString()
+                 `- [Volver](/${key})
+${fs.readFileSync(`${__dirname}/md/${key}/${t}.md`).toString()}`
                )}
                </body>
                </html>`
@@ -68,7 +69,7 @@ const t = {
   edenor: ["saldo", "consumo", "reclamos", "recarga-mide"],
   edelap: ["saldo", "descarga-factura", "reclamo-tecnico"],
   eden: ["saldo", "ultima-factura"],
-  edes: ["saldo", "nises", "ultima-factura"],
+  edes: ["whatsapp", "saldo", "reclamo", "nises", "ultima-factura"],
   "notifications-mailer": ["emails", "templates", "deliveries", "model-template", "token"],
 };
 define(t);
