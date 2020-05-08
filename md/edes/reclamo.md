@@ -41,11 +41,11 @@ Campos del body utilizados:
 
   - Corte de luz --> **Paso 3**
 
-  - Oscilaciones -->
+  - Oscilaciones --> **Paso 3**
 
-  - Baja tensión -->
+  - Baja tensión --> **Paso 3**
 
-  - Alta tensión -->
+  - Alta tensión --> **Paso 3**
 
 - **EstadoTecnico**: "CorteProgramado" --> Informar suspensión del suministro y dar a elegir.
 
@@ -73,7 +73,7 @@ Campos del body utilizados:
         "id": "String",
         "name": "String"
       }
-    ] // Se busca el que tenga name: "Reclamo Sin Luz"
+    ] // Se busca el que tenga name: "Reclamo Sin Luz" o "Reclamo Con Luz" según corresponda
   }
 ] // Se toma el primer elemento
 ```
