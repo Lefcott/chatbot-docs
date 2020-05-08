@@ -19,7 +19,9 @@ const md = require("markdown-it")({
   },
 });
 const { get: getTable } = require("./utils/table");
+const { appendQuery } = require("./utils/query");
 const app = express();
+const tableSize = 20;
 
 app.get("/", (req, res) => {
   res.status(200).send(fs.readFileSync(`${__dirname}/index.html`).toString());
@@ -36,9 +38,10 @@ const define = (utility) => {
       (t) =>
         console.log(key, t) ||
         app.get(`/${key}/${t}`, (req, res) => {
-          const transaction = req.query.transaction || '';
+          const transaction = req.query.transaction || "";
           let tableIndex = req.query.tableIndex || 0;
           tableIndex = parseInt(tableIndex, 10);
+          tableIndex = Math.max(0, tableIndex);
           res.status(200).send(
             `<html lang = 'es'>
                <head>
@@ -61,10 +64,17 @@ ${fs.readFileSync(`md/${key}/${t}.md`).toString()}
 ${
   (fs.existsSync(`md/${key}/${t}.json`) &&
     `Transacción: ${transaction}\n\n${getTable(
-      JSON.parse(fs.readFileSync(`md/${key}/${t}.json`).toString())[transaction],
-      150,
+      JSON.parse(fs.readFileSync(`md/${key}/${t}.json`).toString())[
+        transaction
+      ],
+      tableSize,
       tableIndex
-    )}`) ||
+    )}
+[Anterior](${appendQuery(req._parsedUrl.search, {
+      tableIndex: tableIndex - 1,
+    })}) - [Siguiente](${appendQuery(req._parsedUrl.search, {
+      tableIndex: tableIndex + 1,
+    })})`) ||
   ""
 }`
                )}

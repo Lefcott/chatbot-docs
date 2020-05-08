@@ -19,7 +19,8 @@ const get = (data = [], size = 150, index = 0) => {
     sep += "-|";
   }
   result += `\n${sep}\n`;
-  for (let m = 0; m < keys.length; m += 1) {
+  const min = Math.min(size * index, keys.length);
+  for (let m = min; m < size * (index + 1); m += 1) {
     result += "|";
     for (let k = 0; k < header.length; k += 1)
       result += `${data[keys[m]][header[k]] || " "}|`;
