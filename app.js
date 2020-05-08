@@ -18,6 +18,7 @@ const md = require("markdown-it")({
     );
   },
 });
+const { get: getTable } = require("./utils/table");
 const app = express();
 
 app.get("/", (req, res) => {
@@ -35,8 +36,11 @@ const define = (utility) => {
       (t) =>
         console.log(key, t) ||
         app.get(`/${key}/${t}`, (req, res) => {
+          const transaction = req.query.transaction || '';
+          let tableIndex = req.query.tableIndex || 0;
+          tableIndex = parseInt(tableIndex, 10);
           res.status(200).send(
-            `<html>
+            `<html lang = 'es'>
                <head>
                  <title>${key} - ${t}</title>
                  <link rel='shortcut icon' href='/favicon.png'>
@@ -46,14 +50,23 @@ const define = (utility) => {
                      background-color: #cdd;
                      font-family: "Jost";
                    }
-                   ${fs.readFileSync(`${__dirname}/markdown.css`).toString()}
-                   ${fs.readFileSync(`${__dirname}/hsjs.css`).toString()}
+                   ${fs.readFileSync(`markdown.css`).toString()}
+                   ${fs.readFileSync(`hsjs.css`).toString()}
                  </style>
                </head>
                <body>
                ${md.render(
                  `- [Volver](/${key})
-${fs.readFileSync(`${__dirname}/md/${key}/${t}.md`).toString()}`
+${fs.readFileSync(`md/${key}/${t}.md`).toString()}
+${
+  (fs.existsSync(`md/${key}/${t}.json`) &&
+    `Transacción: ${transaction}\n\n${getTable(
+      JSON.parse(fs.readFileSync(`md/${key}/${t}.json`).toString())[transaction],
+      150,
+      tableIndex
+    )}`) ||
+  ""
+}`
                )}
                </body>
                </html>`
@@ -70,7 +83,13 @@ const t = {
   edelap: ["saldo", "descarga-factura", "reclamo-tecnico"],
   eden: ["saldo", "ultima-factura"],
   edes: ["whatsapp", "saldo", "reclamo", "nises", "ultima-factura"],
-  "notifications-mailer": ["emails", "templates", "deliveries", "model-template", "token"],
+  "notifications-mailer": [
+    "emails",
+    "templates",
+    "deliveries",
+    "model-template",
+    "token",
+  ],
 };
 define(t);
 app.listen(process.env.PORT || 1500);
