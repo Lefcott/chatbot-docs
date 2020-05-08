@@ -63,7 +63,7 @@ const define = (utility) => {
 ${fs.readFileSync(`md/${key}/${t}.md`).toString()}
 ${
   (fs.existsSync(`md/${key}/${t}.json`) &&
-    `Transacción: ${transaction}\n\n${getTable(
+    `Transacción: **${transaction}**\n\n${getTable(
       JSON.parse(fs.readFileSync(`md/${key}/${t}.json`).toString())[
         transaction
       ],
