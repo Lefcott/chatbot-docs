@@ -33,7 +33,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
       ```
   - Status 401:
     - ```json
-      { "error": '"Wrong API Key or API Secret." }
+      { "error": "Wrong API Key or API Secret." }
       ```
   - Status 404:
     - ```json
