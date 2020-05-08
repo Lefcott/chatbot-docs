@@ -37,7 +37,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
 - Headers:
 
 ```json
-{ "authorization": "Bearer TOKEN" }
+{ "Authorization": "Bearer TOKEN" }
 ```
 
 - No requiere Body.
@@ -49,7 +49,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
 - Headers:
 
 ```json
-{ "authorization": "Bearer TOKEN" }
+{ "Authorization": "Bearer TOKEN" }
 ```
 
 - No requiere Body.
@@ -89,7 +89,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
 - Headers:
 
 ```json
-{ "authorization": "Bearer TOKEN" }
+{ "Authorization": "Bearer TOKEN" }
 ```
 
 - No requiere Body.

@@ -13,7 +13,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
 - Headers:
 
 ```json
-{ "authorization": "Bearer TOKEN" }
+{ "Authorization": "Bearer TOKEN" }
 ```
 
 - Body:
@@ -97,7 +97,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
 - Headers:
 
 ```json
-{ "authorization": "Bearer TOKEN" }
+{ "Authorization": "Bearer TOKEN" }
 ```
 
 - Body:

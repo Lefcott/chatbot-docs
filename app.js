@@ -69,7 +69,7 @@ const t = {
   edelap: ["saldo", "descarga-factura", "reclamo-tecnico"],
   eden: ["saldo", "ultima-factura"],
   edes: ["saldo", "nises", "ultima-factura"],
-  "notifications-mailer": ["emails", "templates", "deliveries", "model-template"],
+  "notifications-mailer": ["emails", "templates", "deliveries", "model-template", "token"],
 };
 define(t);
 app.listen(process.env.PORT || 1500);
