@@ -41,6 +41,7 @@ app.use(
 
 app.get("/style.css", (req, res) => res.sendFile(`${__dirname}/md/style.css`));
 app.get("/favicon.png", (req, res) => res.sendFile(`${__dirname}/favicon.png`));
+app.get("/favicon.ico", (req, res) => res.sendFile(`${__dirname}/favicon.png`));
 app.get("/login.css", (req, res) => res.sendFile(`${__dirname}/login.css`));
 
 app.post("/login", async (req, res) => {
