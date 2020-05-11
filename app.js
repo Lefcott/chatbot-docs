@@ -1,5 +1,6 @@
 const express = require("express");
 const fs = require("fs");
+const bodyParser = require("body-parser");
 const hljs = require("highlight.js");
 const md = require("markdown-it")({
   highlight: function (str, lang) {
@@ -20,8 +21,59 @@ const md = require("markdown-it")({
 });
 const { get: getTable } = require("./utils/table");
 const { appendQuery } = require("./utils/query");
+const session = require("express-session");
+const redis = require("./commons/redis");
+const RedisStore = require("connect-redis")(session);
 const app = express();
 const tableSize = 20;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(
+  session({
+    store: new RedisStore({ client: redis }),
+    secret: "widergysecret",
+    saveUninitialized: true,
+    resave: false,
+  })
+);
+
+app.get("/style.css", (req, res) => res.sendFile(`${__dirname}/md/style.css`));
+app.get("/favicon.png", (req, res) => res.sendFile(`${__dirname}/favicon.png`));
+app.get("/login.css", (req, res) => res.sendFile(`${__dirname}/login.css`));
+
+app.post("/login", async (req, res) => {
+  const { user, pass } = req.body;
+  console.log("req.body", req.body);
+  if (req.session.loggedIn) return res.redirect("/");
+  if (!user || !pass) return res.redirect(req.path);
+  const [User] = (await redis.Find("users", { user, pass })) || [];
+  if (User) {
+    req.session.loggedIn = true;
+    res.redirect(req.session.lastPath);
+  } else res.redirect(req.path);
+});
+app.post("/user", async (req, res) => {
+  const { user, pass } = req.body;
+  console.log("req.body", req.body);
+  const { secret } = req.headers;
+  if (!user || !pass) return res.status(400).send("Fill user and pass");
+
+  if (secret !== process.env.SECRET)
+    return res.status(401).send("Not Authorized");
+  res.status(200).json({ result: await redis.Add("users", { user, pass }) });
+});
+
+app.use((req, res, next) => {
+  console.log("req.path", req.path);
+  if (req.path !== "/login" && !req.session.loggedIn) {
+    req.session.lastPath = req.path;
+    return res.redirect("/login");
+  }
+  if (req.path === "/login" && req.session.loggedIn) return res.redirect("/");
+  next();
+});
 
 app.get("/", (req, res) => {
   res.status(200).send(fs.readFileSync(`${__dirname}/index.html`).toString());
@@ -85,8 +137,6 @@ ${
     );
   }
 };
-app.get("/style.css", (req, res) => res.sendFile(`${__dirname}/md/style.css`));
-app.get("/favicon.png", (req, res) => res.sendFile(`${__dirname}/favicon.png`));
 const t = {
   camuzzi: ["saldo", "tarifa-social"],
   edenor: ["saldo", "consumo", "reclamos", "recarga-mide"],
@@ -102,4 +152,7 @@ const t = {
   ],
 };
 define(t);
+
+app.get("/login", (req, res) => res.sendFile(`${__dirname}/login.html`));
+
 app.listen(process.env.PORT || 1500);
