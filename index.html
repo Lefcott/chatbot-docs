@@ -4,11 +4,12 @@
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel='shortcut icon' href='favicon.png'>
+    <link rel="shortcut icon" href="favicon.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Documentación de servicios</h1>
+    <div id="logout" onclick="window.logout()">Logout</div>
     <a href="/camuzzi">
       <div class="button"><div class="text bLeft">Camuzzi</div></div>
     </a>
@@ -25,7 +26,9 @@
       <div class="button"><div class="text bRight">Edes</div></div>
     </a>
     <a href="/notifications-mailer">
-      <div class="button"><div class="text bRight">API Notificationes - Mailer</div></div>
+      <div class="button">
+        <div class="text bRight">API Notificationes - Mailer</div>
+      </div>
     </a>
     <script>
       const texts = document.getElementsByClassName("text");
@@ -37,6 +40,9 @@
           texts[k].style.textShadow = "";
         }
       }, 10);
+      window.logout = () => {
+        window.location.href = "/logout";
+      };
     </script>
   </body>
 </html>

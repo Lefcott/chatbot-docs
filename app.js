@@ -54,6 +54,10 @@ app.post("/login", async (req, res) => {
     res.redirect(req.session.lastPath);
   } else res.redirect(req.path);
 });
+app.get("/logout", async (req, res) => {
+  req.session.loggedIn = false;
+  res.redirect("/login");
+});
 app.post("/user", async (req, res) => {
   const { user, pass } = req.body;
   console.log("req.body", req.body);
