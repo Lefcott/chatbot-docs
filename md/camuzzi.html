@@ -4,25 +4,33 @@
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel='shortcut icon' href='favicon.png'>
-    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <a href="/">Volver al inicio</a>
     <h1>Transacciones Chatbot Camuzzi</h1>
     <a href="/camuzzi/saldo">
       <div class="button"><div class="text bLeft">Consulta de Saldo</div></div>
     </a>
+    <a href="/camuzzi/facturas">
+      <div class="button">
+        <div class="text bLeft">Descarga de facturas</div>
+      </div>
+    </a>
     <a href="/camuzzi/tarifa-social">
-      <div class="button"><div class="text bRight">Consulta de Tarifa Social</div></div>
+      <div class="button">
+        <div class="text bRight">Consulta de Tarifa Social</div>
+      </div>
     </a>
     <script>
-      const texts = document.getElementsByClassName('text');
+      const texts = document.getElementsByClassName("text");
       setTimeout(() => {
         for (let k = 0; k < texts.length; k += 1) {
-          texts[k].style.left = '50%';
-          texts[k].style.top = '50%';
-          texts[k].style.fontSize = '20px';
-          texts[k].style.textShadow = '';
+          texts[k].style.left = "50%";
+          texts[k].style.top = "50%";
+          texts[k].style.fontSize = "20px";
+          texts[k].style.textShadow = "";
         }
       }, 10);
     </script>

@@ -143,7 +143,7 @@ ${
   }
 };
 const t = {
-  camuzzi: ["saldo", "tarifa-social"],
+  camuzzi: ["saldo", "tarifa-social", "facturas"],
   edenor: ["saldo", "consumo", "reclamos", "recarga-mide"],
   edelap: ["saldo", "descarga-factura", "reclamo-tecnico"],
   eden: ["saldo", "ultima-factura"],
