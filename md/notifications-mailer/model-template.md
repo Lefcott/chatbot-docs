@@ -5,15 +5,28 @@
   "subject": "String", // Requerido
   "html": "String", // Requerido
   "text": "String",
-  "templateConfig": {
-    "html": {
-      "braces": "String", // Length: 2, solo símbolos
-      "braceRepeat": "Number" // Min: 1, Max: 50
-    },
-    "text": {
-      "braces": "String", // Length: 2, solo símbolos
-      "braceRepeat": "Number" // Min: 1, Max: 50
+  "tags": ["{{", "}}"], // (Tags de apertura y cierre)
+  "dataShape": {} // (Indica los campos requeridos y opcionales de la matadata)
+}
+```
+
+##### Ejemplo de "dataShape":
+
+```json
+{
+  "subject": "required",
+  "userName": "optional",
+  "someArray": [ // Describe la estructura de todos los elementos del array
+    {
+      "imageSource": "required",
+      "title": "required",
+      "otherArray": [
+        {
+          "imageSource": "optional",
+          "title": "required"
+        }
+      ]
     }
-  }
+  ]
 }
 ```

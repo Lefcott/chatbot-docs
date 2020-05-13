@@ -52,11 +52,15 @@ app.post("/login", async (req, res) => {
   const [User] = (await redis.Find("users", { user, pass })) || [];
   if (User) {
     req.session.loggedIn = true;
+    req.session.user = user;
+    req.session.pass = pass;
     res.redirect(req.session.lastPath);
   } else res.redirect(req.path);
 });
 app.get("/logout", async (req, res) => {
   req.session.loggedIn = false;
+  req.session.user = null;
+  req.session.user = null;
   res.redirect("/login");
 });
 app.post("/user", async (req, res) => {
