@@ -27,7 +27,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
     - ```json
       {
         "message": "Hi {{ utility.name }}, enjoy your token!",
-        "expiration": "Number",
+        "expiration": "Number", // (Unix timestamp)
         "token": "TOKEN"
       }
       ```
