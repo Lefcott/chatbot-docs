@@ -27,6 +27,7 @@
     "highlight.js": "^10.0.0",
     "markdown-it": "^10.0.0",
     "redis": "^3.0.2",
-    "showdown": "^1.9.1"
+    "showdown": "^1.9.1",
+    "throng": "^4.0.0"
   }
 }
