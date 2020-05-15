@@ -23,7 +23,6 @@ URL prod : https://notifications-api.widergy.com/api/v1
   - Status 200:
     - ```json
       {
-        "id": "String",
         "utility_id": "Number",
         "errorMessage": "String",
         "errorCode": "String",
@@ -33,7 +32,17 @@ URL prod : https://notifications-api.widergy.com/api/v1
         "cc": ["String"],
         "bcc": ["String"],
         "replyTo": ["String"],
-        "constant_mapping": [{}]
+        "metadata": [{}], // Datos custom usados para renderizar el mail
+        "statuses": [
+          {
+            "name": "String", // Nombre del evento, puede ser "Rejected", "AcceptedBySES", "Delivered", "Opened", "MarkedAsSpam", "UserClickedLink", "Bounced"
+            "timestamp": "Number", // Tiemstamp en milisegundos
+            "link": "String", // Es null en eventos distintos de "UserClickedLink"
+            "isGroup": "Boolean", // true si el evento afecta a todos los destinatarios
+            "recipient": "String", // Es null para eventos grupales
+            "delaySeconds": "Number" // Cantidad de segundos que pasaron desde el evento anterior
+          }
+        ]
       }
       ```
   - Status 400:

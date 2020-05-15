@@ -25,12 +25,19 @@ const { appendQuery } = require("./utils/query");
 const session = require("express-session");
 const redis = require("./commons/redis");
 const RedisStore = require("connect-redis")(session);
-throng(() => {
+let threadID;
+throng((id) => {
+  threadID = id;
   const app = express();
   const tableSize = 20;
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
+
+  app.use((...args) => {
+    console.log('threadID:', threadID);
+    args[2]();
+  })
 
   app.use(
     session({
@@ -54,7 +61,6 @@ throng(() => {
 
   app.post("/login", async (req, res) => {
     const { user, pass } = req.body;
-    console.log("req.body", req.body);
     if (req.session.loggedIn) return res.redirect("/");
     if (!user || !pass) return res.redirect(req.path);
     const [User] = (await redis.Find("users", { user, pass })) || [];
@@ -73,7 +79,6 @@ throng(() => {
   });
   app.post("/user", async (req, res) => {
     const { user, pass } = req.body;
-    console.log("req.body", req.body);
     const { secret } = req.headers;
     if (!user || !pass) return res.status(400).send("Fill user and pass");
 
@@ -83,7 +88,6 @@ throng(() => {
   });
 
   app.use((req, res, next) => {
-    console.log("req.path", req.path);
     if (req.path !== "/login" && !req.session.loggedIn) {
       req.session.lastPath = req.path;
       return res.redirect("/login");
@@ -103,16 +107,14 @@ throng(() => {
       app.get(`/${key}`, (req, res) => {
         res.status(200).sendFile(`${__dirname}/md/${key}.html`);
       });
-      utility[key].forEach(
-        (t) =>
-          console.log(key, t) ||
-          app.get(`/${key}/${t}`, (req, res) => {
-            const transaction = req.query.transaction || "";
-            let tableIndex = req.query.tableIndex || 0;
-            tableIndex = parseInt(tableIndex, 10);
-            tableIndex = Math.max(0, tableIndex);
-            res.status(200).send(
-              `<html lang = 'es'>
+      utility[key].forEach((t) =>
+        app.get(`/${key}/${t}`, (req, res) => {
+          const transaction = req.query.transaction || "";
+          let tableIndex = req.query.tableIndex || 0;
+          tableIndex = parseInt(tableIndex, 10);
+          tableIndex = Math.max(0, tableIndex);
+          res.status(200).send(
+            `<html lang = 'es'>
                  <head>
                    <title>${key} - ${t}</title>
                    <link rel='shortcut icon' href='/favicon.png'>
@@ -149,8 +151,8 @@ throng(() => {
                  )}
                  </body>
                  </html>`
-            );
-          })
+          );
+        })
       );
     }
   };

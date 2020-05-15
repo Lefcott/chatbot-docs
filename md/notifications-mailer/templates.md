@@ -59,10 +59,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
   - Status 200 ([Ver modelo de Template](model-template)):
 
     - ```json
-      {
-        "message": "getTemplate OK.",
-        "template": Modelo de Template
-      }
+      { "template": Modelo de Template }
       ```
 
   - Status 400:
@@ -99,19 +96,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
   - Status 200 ([Ver modelo de Template](model-template)):
 
     - ```json
-      {
-        "errors": [],
-        "templates": [Modelo de Template]
-      }
-      ```
-
-  - Status 207 ([Ver modelo de Template](model-template)):
-
-    - ```json
-      {
-        "errors": ["String"],
-        "templates": [Modelo de Template]
-      }
+      { "templates": [Modelo de Template] }
       ```
 
   - Status 400:
@@ -129,12 +114,4 @@ URL prod : https://notifications-api.widergy.com/api/v1
   - Status 500:
     - ```json
       { "error": "{{ error }}" }
-      ```
-  - Status 500:
-
-    - ```json
-      {
-        "errors": ["String"],
-        "templates": []
-      }
       ```
