@@ -165,6 +165,7 @@ throng((id) => {
     "notifications-mailer": [
       "emails",
       "blockedEmails",
+      "blockingConfigs",
       "templates",
       "deliveries",
       "model-template",
