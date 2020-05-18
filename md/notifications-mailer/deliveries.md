@@ -35,11 +35,12 @@ URL prod : https://notifications-api.widergy.com/api/v1
         "metadata": [{}], // Datos custom usados para renderizar el mail
         "statuses": [
           {
-            "name": "String", // Nombre del evento, puede ser "Rejected", "AcceptedBySES", "Delivered", "Opened", "MarkedAsSpam", "UserClickedLink", "Bounced"
+            "name": "String", // Nombre del evento, puede ser null, "Rejected", "AcceptedBySES", "Delivered", "Opened", "MarkedAsSpam", "UserClickedLink", "Bounced"
+            "bounceType": "String", // Tipo de rechazo, puede ser null, "unknown", "hardGeneral", "hardNoEmail", "hardSuppressionList", "hardSuppressed", "softGeneral", "softMailboxFull", "softMessageTooLarge", "softContentRejected", "softAttachmentRejected"
             "timestamp": "Number", // Tiemstamp en milisegundos
             "link": "String", // Es null en eventos distintos de "UserClickedLink"
             "isGroup": "Boolean", // true si el evento afecta a todos los destinatarios
-            "recipient": "String", // Es null para eventos grupales
+            "mail_recipient_id": "Number", // Es null para eventos grupales
             "delaySeconds": "Number" // Cantidad de segundos que pasaron desde el evento anterior
           }
         ]

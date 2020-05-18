@@ -21,13 +21,16 @@ URL prod : https://notifications-api.widergy.com/api/v1
 ```json
 {
   "from_name": "String",
-  "recipients": [ // Requerido
+  "from_email": "String", // Requerido (Email válido)
+  "recipients": [
+    // Requerido
     {
       "email": "String", // Requerido (Email válido)
       "type": "String" // Requerido (Valores posibles: "to", "cc", "bcc", "replyTo")
     }
   ],
-  "model": { // Requerido
+  "model": {
+    // Requerido
     "subject": "String" // Requerido
   },
   "html": "String", // Requerido
@@ -63,32 +66,52 @@ URL prod : https://notifications-api.widergy.com/api/v1
             "href": "/api/v1/mailer/delivery/{{ deliveryId }}",
             "description": "Specific delivery"
           }
-        ]
+        ],
+        "wontSend": {
+          "to": ["String"],
+          "cc": ["String"],
+          "bcc": ["String"],
+          "replyTo": ["String"]
+        }
       }
       ```
   - Status 422:
+
     - ```json
       {
         "error": "Missing properties in field \"metadata\"",
         "missingKeys": ["String"]
       }
       ```
-  - Status 400:
-    - ```json
-      { "error": "Bad parameters" }
-      ```
-  - Status 401:
-    - ```json
-      { "error": "Not authorized" }
-      ```
-  - Status 404:
-    - ```json
-      { "error": "Delivery not found" }
-      ```
-  - Status 500:
-    - ```json
-      { "error": "{{ error }}" }
-      ```
+
+* Status 422:
+  - ```json
+    {
+      "error": "Cannot send email because the 'to' recipient is blocked because of too many bounces or spam marks",
+      "wontSend": {
+        "to": ["String"],
+        "cc": ["String"],
+        "bcc": ["String"],
+        "replyTo": ["String"]
+      }
+    }
+    ```
+* Status 400:
+  - ```json
+    { "error": "Bad parameters" }
+    ```
+* Status 401:
+  - ```json
+    { "error": "Not authorized" }
+    ```
+* Status 404:
+  - ```json
+    { "error": "Delivery not found" }
+    ```
+* Status 500:
+  - ```json
+    { "error": "{{ error }}" }
+    ```
 
 #### Enviar mail con template:
 
@@ -105,13 +128,16 @@ URL prod : https://notifications-api.widergy.com/api/v1
 ```json
 {
   "from_name": "String",
-  "recipients": [ // Requerido
+  "from_email": "String", // Requerido (Email válido)
+  "recipients": [
+    // Requerido
     {
       "email": "String", // Requerido (Email válido)
       "type": "String" // Requerido (Valores posibles: "to", "cc", "bcc", "replyTo")
     }
   ],
-  "model": { // Requerido
+  "model": {
+    // Requerido
     "subject": "String" // Requerido
   },
   "attachments": [
@@ -145,7 +171,13 @@ URL prod : https://notifications-api.widergy.com/api/v1
             "href": "/api/v1/mailer/delivery/{{ deliveryId }}",
             "description": "Specific delivery"
           }
-        ]
+        ],
+        "wontSend": {
+          "to": ["String"],
+          "cc": ["String"],
+          "bcc": ["String"],
+          "replyTo": ["String"]
+        }
       }
       ```
   - Status 422:
@@ -170,3 +202,4 @@ URL prod : https://notifications-api.widergy.com/api/v1
   - Status 500:
     - ```json
       { "error": "{{ error }}" }
+      ```
