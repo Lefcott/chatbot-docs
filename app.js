@@ -22,6 +22,7 @@ const md = require("markdown-it")({
 });
 const { get: getTable } = require("./utils/table");
 const { appendQuery } = require("./utils/query");
+const rollbar = require("./commons/rollbar");
 const session = require("express-session");
 const redis = require("./commons/redis");
 const RedisStore = require("connect-redis")(session);
@@ -34,11 +35,6 @@ throng((id) => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
 
-  app.use((...args) => {
-    console.log('threadID:', threadID);
-    args[2]();
-  })
-
   app.use(
     session({
       store: new RedisStore({ client: redis }),
@@ -47,6 +43,17 @@ throng((id) => {
       resave: false,
     })
   );
+  app.use((...args) => {
+    const user = args[0].session && args[0].session.user;
+    console.log(
+      "threadID:",
+      threadID,
+      ", user:",
+      args[0].session && args[0].session.user
+    );
+    if (user) rollbar.log(`${user} is accessing to ${args[0].path}`);
+    args[2]();
+  });
 
   app.get("/style.css", (req, res) =>
     res.sendFile(`${__dirname}/md/style.css`)
