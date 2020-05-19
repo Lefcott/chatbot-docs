@@ -84,34 +84,42 @@ URL prod : https://notifications-api.widergy.com/api/v1
       }
       ```
 
-* Status 422:
-  - ```json
-    {
-      "error": "Cannot send email because the 'to' recipient is blocked because of too many bounces or spam marks",
-      "wontSend": {
-        "to": ["String"],
-        "cc": ["String"],
-        "bcc": ["String"],
-        "replyTo": ["String"]
+  - Status 422:
+
+    - ```json
+      { "error": "Email address is not verified" }
+      ```
+
+  - Status 422:
+
+    - ```json
+      {
+        "error": "Cannot send email because the 'to' recipient is blocked because of too many bounces or spam marks",
+        "wontSend": {
+          "to": ["String"],
+          "cc": ["String"],
+          "bcc": ["String"],
+          "replyTo": ["String"]
+        }
       }
-    }
-    ```
-* Status 400:
-  - ```json
-    { "error": "Bad parameters" }
-    ```
-* Status 401:
-  - ```json
-    { "error": "Not authorized" }
-    ```
-* Status 404:
-  - ```json
-    { "error": "Delivery not found" }
-    ```
-* Status 500:
-  - ```json
-    { "error": "{{ error }}" }
-    ```
+      ```
+
+  - Status 400:
+    - ```json
+      { "error": "Bad parameters" }
+      ```
+  - Status 401:
+    - ```json
+      { "error": "Not authorized" }
+      ```
+  - Status 404:
+    - ```json
+      { "error": "Delivery not found" }
+      ```
+  - Status 500:
+    - ```json
+      { "error": "{{ error }}" }
+      ```
 
 #### Enviar mail con template:
 
@@ -179,6 +187,10 @@ URL prod : https://notifications-api.widergy.com/api/v1
           "replyTo": ["String"]
         }
       }
+      ```
+  - Status 422:
+    - ```json
+      { "error": "Email address is not verified" }
       ```
   - Status 422:
     - ```json
