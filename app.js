@@ -164,6 +164,7 @@ throng((id) => {
     edes: [/*"whatsapp", */ "saldo", "reclamo", "nises", "ultima-factura"],
     "notifications-mailer": [
       "emails",
+      "verifiedEmails",
       "blockedEmails",
       "blockingConfigs",
       "templates",
