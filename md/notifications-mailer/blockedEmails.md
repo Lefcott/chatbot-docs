@@ -61,7 +61,7 @@ URL prod : https://notifications-api.widergy.com/api/v1
     - ```json
       {
         "details": {
-          // Puede venir con "frequency", con "totalTriggers" o con los 2.
+          // Puede venir con "frequency", con "totalTriggers", con los 2 o con "manualBlocking".
           "frequency": {
             "reached": {
               "time": "Number",
@@ -79,7 +79,8 @@ URL prod : https://notifications-api.widergy.com/api/v1
             "reached": "Number",
             "bounceType": "String",
             "maxAllowed": "Number"
-          }
+          },
+          "manualBlocking": { "description": "String"}
         }
       }
       ```
@@ -98,4 +99,104 @@ URL prod : https://notifications-api.widergy.com/api/v1
   - Status 500:
     - ```json
       { "error": "Error getting Blocked Emails" }
+      ```
+
+---
+
+#### Bloquear un Email:
+
+**POST** /mailer/blockEmail
+
+- Headers:
+
+```json
+{ "Authorization": "Bearer TOKEN" }
+```
+
+- Body:
+```json
+{
+  "email": "String", // Requerido
+  "description": "String"
+}
+```
+
+- Responses:
+
+  - Status 200:
+    - ```json
+      {
+        "message": "Recipient was blocked successfully!",
+        "updatedRecipient": {
+          "id": "Number",
+          "utility_id": "Number",
+          "email": "String",
+          "blocked": true,
+          "blockingReason": {
+            "manualBlocking": {
+              "description": "String"
+            }
+          },
+          "createdAt": "String",
+          "updatedAt": "String"
+        }
+      }
+      ```
+  - Status 400:
+    - ```json
+      { "error": "Bad parameters" }
+      ```
+  - Status 409:
+    - ```json
+      { "error": "That email is aleady blocked" }
+      ```
+  - Status 401:
+    - ```json
+      { "error": "Not authorized" }
+      ```
+  - Status 500:
+    - ```json
+      { "error": "{error}" }
+      ```
+      
+---
+
+#### Desbloquear un Email:
+
+**POST** /mailer/unblockEmail
+
+- Headers:
+
+```json
+{ "Authorization": "Bearer TOKEN" }
+```
+
+- Body:
+```json
+{
+  "email": "String", // Requerido
+}
+```
+
+- Responses:
+
+  - Status 200:
+    - ```json
+      { "message": "Recipient was unblocked successfully!" }
+      ```
+  - Status 400:
+    - ```json
+      { "error": "Bad parameters" }
+      ```
+  - Status 409:
+    - ```json
+      { "error": "That email was not blocked" }
+      ```
+  - Status 401:
+    - ```json
+      { "error": "Not authorized" }
+      ```
+  - Status 500:
+    - ```json
+      { "error": "Could not update the recipient" }
       ```
