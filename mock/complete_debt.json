@@ -1,0 +1,39 @@
+{
+  "path": "/consumer_api/v1/accounts/complete_debts",
+  "method": "get",
+  "response": {
+    "account": {
+      "client_number": "123569801",
+      "holder_name": "VIGOLONGO, MARIA ESTER",
+      "rate": "T1R - Residencial",
+      "address": "CALLE 017 3025",
+      "city": "MERCEDES",
+      "depends_on_electricity": false
+    },
+    "balances": {
+      "total_balance": 1665.5,
+      "expired_balance": 810.5,
+      "non_expired_balance": 855
+    },
+    "next_expiration_on": "2020-08-05T00:00:00.000-03:00",
+    "debts": [
+      {
+        "client_number": "123569801",
+        "period": "201801",
+        "external_id": "75218607",
+        "first_expiration_on": "2020-05-02T00:00:00.000-03:00",
+        "balance": 810.5,
+        "barcode": "117333072905752186070000805980"
+      },
+      {
+        "client_number": "123569801",
+        "period": "201802",
+        "external_id": "75218614",
+        "first_expiration_on": "2020-08-05T00:00:00.000-03:00",
+        "balance": 855,
+        "barcode": "117361072905752186140000850876"
+      }
+    ],
+    "message": "2 de 2 Registros encontrados"
+  }
+}
