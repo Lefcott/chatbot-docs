@@ -94,7 +94,29 @@ throng((id) => {
     res.status(200).json({ result: await redis.Add("users", { user, pass }) });
   });
 
+  const mockFiles = fs.readdirSync(`${__dirname}/mock`);
+  for (let k = 0; k < mockFiles.length; k += 1) {
+    const file = mockFiles[k];
+    const name = file.substr(0, file.length - 5);
+    const json = JSON.parse(
+      fs.readFileSync(`${__dirname}/mock/${file}`).toString()
+    );
+    if (!json.method) {
+      rollbar.error(`Didn't found 'method' for mock on '${name}'`);
+      continue;
+    }
+    if (!json.path) {
+      rollbar.error(`Didn't found 'path' for mock on '${name}'`);
+      continue;
+    }
+    app[json.method](`/mock${json.path}`, (req, res) =>
+      res.json(json.response)
+    );
+  }
+
   app.use((req, res, next) => {
+    if (req.path.startsWith("/mock"))
+      return res.status(404).send("mock not found");
     if (req.path !== "/login" && !req.session.loggedIn) {
       req.session.lastPath = req.path;
       return res.redirect("/login");
@@ -103,9 +125,9 @@ throng((id) => {
     next();
   });
 
-  app.get("/", (req, res) => {
-    res.status(200).send(fs.readFileSync(`${__dirname}/index.html`).toString());
-  });
+  app.get("/", (req, res) =>
+    res.status(200).send(fs.readFileSync(`${__dirname}/index.html`).toString())
+  );
 
   const define = (utility) => {
     const keys = Object.keys(utility);

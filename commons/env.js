@@ -1,7 +1,7 @@
 const env = {
   REDISCLOUD_URL:
-    "redis://rediscloud:JkDuAcH2nEZ3gEe24H0upZaaPt2KQJZR@redis-16739.c52.us-east-1-4.ec2.cloud.redislabs.com:16739",
-  ROLLBAR_ACCESS_TOKEN: "f50524c0073f461989bc5796890eb589",
+    "redis://rediscloud:QE4z245uuCLgrzMCKGBoj3htJTrjpz4B@redis-10921.c44.us-east-1-2.ec2.cloud.redislabs.com:10921",
+  ROLLBAR_ACCESS_TOKEN: "f46a983237494c3d932a038d13cfa0e2",
   SECRET: "WidergyDocsSecret",
 };
 
