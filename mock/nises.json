@@ -1,0 +1,19 @@
+{
+  "path": "/consumer_api/v1/accounts",
+  "method": "get",
+  "response": {
+    "holder_name": "VIGOLONGO, MARIA ESTER",
+    "accounts": [
+      {
+        "client_number": "345204702",
+        "city": "BAHIA BLANCA",
+        "address": "9 DE JULIO 810"
+      },
+      {
+        "client_number": "155289401",
+        "city": "BAHIA BLANCA",
+        "address": "LIBERTAD 923"
+      }
+    ]
+  }
+}
