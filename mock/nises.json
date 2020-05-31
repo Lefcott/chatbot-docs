@@ -14,6 +14,8 @@
         "city": "BAHIA BLANCA",
         "address": "LIBERTAD 923"
       }
-    ]
+    ],
+    "test1": [{ "a": 1 }, { "a": 2 }, { "a": 3 }, { "a": 4 }],
+    "test2": [{ "b": 1 }, { "b": 2 }, { "b": 3 }, { "b": 4 }]
   }
 }
