@@ -24,7 +24,7 @@
     "connect-redis": "^4.0.4",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "highlight.js": "^10.0.0",
+    "highlight.js": "^10.4.1",
     "markdown-it": "^10.0.0",
     "redis": "^3.0.2",
     "rollbar": "^2.16.2",
